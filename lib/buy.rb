@@ -3,6 +3,9 @@ require 'bigdecimal'
 require 'security'
 
 class Buy
+
+attr_reader :quantity
+
   def initialize(security, quantity, acquire_date, unit_cost)
     @security = security
     @quantity = BigDecimal(quantity)
