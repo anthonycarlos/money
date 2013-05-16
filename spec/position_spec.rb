@@ -33,5 +33,20 @@ describe Position do
     Then { result.should == BigDecimal('3294.90') }
   end
 
+  describe "#unrealized_gain_or_loss" do
+    When(:result) { subject.unrealized_gain_or_loss }
+    Then { result.should == BigDecimal('732.48') }
+  end
+
+  describe "#percent_gain_or_loss" do
+    When(:result) { subject.percent_gain_or_loss }
+    Then { result.should == BigDecimal('28.59') }
+  end
+
+  describe "#average_unit_cost" do
+    When(:result) { subject.average_unit_cost }
+    Then { result.should == BigDecimal('18.1902') }
+  end
+
 end
 

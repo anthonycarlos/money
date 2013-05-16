@@ -19,4 +19,16 @@ class Position
     (@market_price * quantity).round(2)
   end
 
+  def unrealized_gain_or_loss
+    (market_value - cost).round(2)
+  end
+
+  def percent_gain_or_loss
+    (((market_value - cost) / cost) * 100).round(2)
+  end
+
+  def average_unit_cost
+    (cost / quantity).round(4)
+  end
+
 end
