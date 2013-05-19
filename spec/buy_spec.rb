@@ -26,4 +26,24 @@ describe Buy do
     Then { result.should == BigDecimal('28.80') }
   end
 
+  describe "#months" do
+    When(:result) { subject.months(today) }
+    context "exactly 1 year later" do
+      Given(:today) { Date.new(2012, 8, 17) }
+      Then { result.should == 12 }
+    end
+    context "1 year minus a day later" do
+      Given(:today) { Date.new(2012, 8, 16) }
+      Then { result.should == 11 }
+    end
+    context "1 year plus 1 month later" do
+      Given(:today) { Date.new(2012, 9, 17) }
+      Then { result.should == 13 }
+    end
+    context "1 year plus 1 month minus a day later" do
+      Given(:today) { Date.new(2012, 9, 16) }
+      Then { result.should == 12 }
+    end
+  end
+
 end
