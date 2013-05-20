@@ -47,7 +47,11 @@ attr_reader :quantity
     months_f = months.to_f
     result_f = (((market_value_f - cost_f) / cost_f) + 1.0) ** (1.0 / months_f)
     result_bd = BigDecimal.new(result_f.to_s)
-    result_bd.round(4)
+    result_bd
+  end
+
+  def cmgr_percent(market_price, months)
+    (cmgr(market_price, months) - 1) * 100
   end
 
   private
