@@ -41,6 +41,15 @@ attr_reader :quantity
     end
   end
 
+  def cmgr(market_price, months)
+    market_value_f = market_value(market_price).to_f
+    cost_f = cost.to_f
+    months_f = months.to_f
+    result_f = (((market_value_f - cost_f) / cost_f) + 1.0) ** (1.0 / months_f)
+    result_bd = BigDecimal.new(result_f.to_s)
+    result_bd.round(4)
+  end
+
   private
 
   def months_without_days(today)

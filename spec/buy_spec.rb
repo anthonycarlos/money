@@ -46,4 +46,11 @@ describe Buy do
     end
   end
 
+  describe "#cmgr" do
+    Given(:market_value) { '24.4300' }
+    Given(:today) { Date.new(2013, 5, 19) }
+    When(:result) { subject.cmgr(market_value, subject.months(today)) }
+    Then { result.should == BigDecimal('1.0142') }
+  end
+
 end
