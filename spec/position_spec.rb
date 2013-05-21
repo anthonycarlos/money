@@ -33,6 +33,11 @@ describe Position do
     Then { result.should == BigDecimal('3294.90') }
   end
 
+  describe "#market_value_by_sum" do
+    When(:result) { subject.market_value_by_sum(market_price) }
+    Then { result.should be_within(0.01).of(BigDecimal('3294.90')) }
+  end
+
   describe "#unrealized_gain_or_loss" do
     When(:result) { subject.unrealized_gain_or_loss }
     Then { result.should == BigDecimal('732.48') }

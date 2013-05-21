@@ -19,6 +19,10 @@ class Position
     (@market_price * quantity).round(2)
   end
 
+  def market_value_by_sum(market_price)
+    @buys.inject(BigDecimal('0')){|memo, obj| memo + obj.market_value(market_price) }
+  end
+
   def unrealized_gain_or_loss
     (market_value - cost).round(2)
   end
