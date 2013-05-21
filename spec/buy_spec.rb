@@ -60,4 +60,18 @@ describe Buy do
     Then { result.should be_within(0.001).of(BigDecimal('1.422')) }
   end
 
+  describe "#cagr" do
+    Given(:market_value) { '24.4300' }
+    Given(:today) { Date.new(2013, 5, 19) }
+    When(:result) { subject.cagr(market_value, subject.months(today)) }
+    Then { result.should be_within(0.0001).of(BigDecimal('1.1847')) }
+  end
+
+  describe "#cagr_percent" do
+    Given(:market_value) { '24.4300' }
+    Given(:today) { Date.new(2013, 5, 19) }
+    When(:result) { subject.cagr_percent(market_value, subject.months(today)) }
+    Then { result.should be_within(0.001).of(BigDecimal('18.469')) }
+  end
+
 end

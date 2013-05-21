@@ -54,6 +54,14 @@ attr_reader :quantity
     (cmgr(market_price, months) - 1) * 100
   end
 
+  def cagr(market_price, months)
+    cmgr(market_price, months) ** 12
+  end
+
+  def cagr_percent(market_price, months)
+    (cagr(market_price, months) - 1) * 100
+  end
+
   private
 
   def months_without_days(today)
